@@ -207,11 +207,11 @@ At the bottom of `main.py` add the following:
 class CallbackHandler(webapp2.RequestHandler):
     def post(self):
       callback = dict(urlparse.parse_qsl(self.request.body))
-      callback_to_model(callback)
+      PrankModel.create_from_callback(callback)
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
-    ('/callback', CallbackHandler),
+    ('/callback/?', CallbackHandler),
 ], debug=True)
 
 ```
