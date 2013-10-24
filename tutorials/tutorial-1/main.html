@@ -1,0 +1,32 @@
+<html>
+	<head>
+		<title>Prank Caller</title>
+	</head>
+
+	<body>
+		{% if prank %}
+
+			{{ prank.title }}<br>
+			{{ prank.content }}<br>
+			{{ prank.status }}<br>
+
+			{% if prank.status == 'Closed' %}
+				New Prank?
+				<form id="submit-form" method=POST>
+					<input type="text" name="phone-number">
+					<input type="text" name="prank-text">
+					<button type="submit">Submit</button>
+				</form>
+			{% endif %}
+
+		{% else %}
+
+			<form method=POST>
+				<input type="text" name="phone-number">
+				<input type="text" name="prank-text">
+				<button type="submit">Submit</button>
+			</form>
+
+		{% endif %}
+	</body>
+</html>
