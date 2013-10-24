@@ -2,7 +2,7 @@ from urllib import urlencode
 import oauth2 as oauth
 import json
 
-API_HOST = 'http://localhost:8080'
+API_HOST = 'https://www.fancyhands.com'
 
 class FancyhandsClient(object):
 	def __init__(self, api_key, secret):
