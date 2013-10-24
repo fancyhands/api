@@ -1,56 +1,56 @@
 # Tutorial One - Prank Caller
 
-      This is the first tutorial in a series of tutorials on using the Fancy Hands API. Over the course of this tutorial you will learn how to setup and use the Fancy Hands Python API, a basic use case for the API, as well as how to setup and run a basic App Engine server.
+This is the first tutorial in a series of tutorials on using the Fancy Hands API. Over the course of this tutorial you will learn how to setup and use the Fancy Hands Python API, a basic use case for the API, as well as how to setup and run a basic App Engine server.
 
-      Prank Caller is a small webapp that allows you to submit prank calls that the Fancy Hands assistants will place for you. You enter the number you would like pranked, and a short line for the assistants to say to whomever picks up. Once the assistant has completed the prank, they will fill out the reaction they got, and submit it back to you. Lets get started!
+Prank Caller is a small webapp that allows you to submit prank calls that the Fancy Hands assistants will place for you. You enter the number you would like pranked, and a short line for the assistants to say to whomever picks up. Once the assistant has completed the prank, they will fill out the reaction they got, and submit it back to you. Lets get started!
 
-## **Fancy Hands API**
+## Fancy Hands API
 
-      Navigate to the [API Explorer](https://www.fancyhands.com/api/explorer) and follow the steps to get your API keys. These keys are used to identify who you are when using the API. The keys will be labeled key and secret:
+Navigate to the [API Explorer](https://www.fancyhands.com/api/explorer) and follow the steps to get your API keys. These keys are used to identify who you are when using the API. The keys will be labeled key and secret:
 
-      ![](/images/api-tutorials/data-api.png)
+![credentials](http://www.fancyhands.com/images/api-tutorials/data-api.png)
 
-      <!-- STEP ONE -->
 
-## **App Engine**
+## Getting Started with App Engine
 
-      Next we will need to setup [Google App Engine](https://developers.google.com/appengine/). Google App Engine will be used to host the application.
+Next we will need to setup [Google App Engine](https://developers.google.com/appengine/). Google App Engine will be used to host the application.
 
-      Download SDK: [Google App Engine SDK for Python](https://developers.google.com/appengine/downloads#Google_App_Engine_SDK_for_Python)
+1. Download SDK: [Google App Engine SDK for Python (https://developers.google.com/appengine/downloads#Google_App_Engine_SDK_for_Python)
 
-      Install the SDK and launch it. Now download the base project with all the prerequisites you will need to easily build Prank Caller. 
+2. Install the SDK and launch it. 
 
-      Get the base code here: [Fancy Hands Tutorial One](https://github.com/fancyhands/fancyhands-tutorial-1)
+3. Now download the base project with all the prerequisites you will need to easily build Prank Caller. 
+   Get the base code here: [Fancy Hands Tutorial One](https://github.com/fancyhands/fancyhands-tutorial-1)
 
-      OR
+     --*or*--
 
-      <textarea class="tutorial-bash">git clone https://github.com/fancyhands/fancyhands-tutorial-1</textarea>
+```
+git clone https://github.com/fancyhands/fancyhands-tutorial-1
+```
 
-      Now we need to import the project into Google App Engine. In the Google App Engine Launcher “add an existing application” using the source code you just downloaded. 
+Now we need to import the project into Google App Engine. In the Google App Engine Launcher “add an existing application” using the source code you just downloaded. 
 
-      Change the Port to 8888 and the Admin Port to 8000.
+Change the Port to 8888 and the Admin Port to 8000.
 
-      ![](/images/api-tutorials/add-exisiting.png)
+![adding a new project](http://www.fancyhands.com/images/api-tutorials/add-exisiting.png)
 
-      Now start the server by clicking the big green run button.
+Now start the server by clicking the big green run button.
 
-      ![](/images/api-tutorials/green-button.png)
+![starting the server](http://www.fancyhands.com/images/api-tutorials/green-button.png)
 
-      <!-- STEP TWO -->
+## Coding
 
-## **Coding**
+In your web browser open [http://localhost:8888/](http://localhost:8888/)
 
-      In your web browser open [http://localhost:8888/](http://localhost:8888/)
+You should be presented with the UI for prank caller, but the backend has yet to be hooked up.
 
-      You should be presented with the UI for prank caller, but the backend has yet to be hooked up.
+Prank Call Flow:
 
-      Prank Call Flow:
+Open main.py and import FancyhandsClient into the project:
 
-      Open main.py and import FancyhandsClient into the project:
+<input type="textarea" class="tutorial-python" value="from fancyhands import FancyhandsClient">
 
-      <input type="textarea" class="tutorial-python" value="from fancyhands import FancyhandsClient">
-
-      Next, in the MainHandler class you will need to create a POST method to catch the posted data and setup the FancyhandsClient. Make sure to change your API keys to what you received in Step One.
+Next, in the MainHandler class you will need to create a POST method to catch the posted data and setup the FancyhandsClient. Make sure to change your API keys to what you received in Step One.
 
 <textarea class="tutorial-python">
 class MainHandler(webapp2.RequestHandler):
@@ -194,4 +194,4 @@ app = webapp2.WSGIApplication([
 
       That's it! You can view or download the completed project [Here.](https://github.com/fancyhands/fancyhands-tutorial-1)
 
-    </div>
+ 
