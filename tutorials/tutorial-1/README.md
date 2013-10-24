@@ -222,6 +222,6 @@ Follow the steps [Here](https://developers.google.com/appengine/docs/java/gettin
 
 Your URL will look something like prank-caller@appspot.com. You should now change your webhook on fancyhands to yourdomain.appspot.com/callback. You can do that [Here](https://www.fancyhands.com/api/oauth/developer)
 
-That's it! You can view or download the completed project [Here.](https://github.com/fancyhands/fancyhands-tutorial-1)
+That's it! You can view or download the completed project [Here.](https://github.com/fancyhands/fancyhands-tutorial-1-complete)
 
  
