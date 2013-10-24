@@ -4,7 +4,7 @@ This is the first tutorial in a series of tutorials on using the Fancy Hands API
 
 Prank Caller is a small webapp that allows you to submit prank calls that the Fancy Hands assistants will place for you. You enter the number you would like pranked, and a short line for the assistants to say to whomever picks up. Once the assistant has completed the prank, they will fill out the reaction they got, and submit it back to you. Lets get started!
 
-## Fancy Hands API
+## Register for the Fancy Hands API
 
 Navigate to the [API Explorer](https://www.fancyhands.com/api/explorer) and follow the steps to get your API keys. These keys are used to identify who you are when using the API. The keys will be labeled key and secret:
 
@@ -20,13 +20,10 @@ Next we will need to setup [Google App Engine](https://developers.google.com/app
 2. Install the SDK and launch it. 
 
 3. Now download the base project with all the prerequisites you will need to easily build Prank Caller. 
-   Get the base code here: [Fancy Hands Tutorial One](https://github.com/fancyhands/fancyhands-tutorial-1)
+   * Download the Zip: [Fancy Hands Tutorial One](https://github.com/fancyhands/fancyhands-tutorial-1)  
+   --*or*--
+   * Clone via command line with: `git clone https://github.com/fancyhands/fancyhands-tutorial-1`
 
-     --*or*--
-
-```
-git clone https://github.com/fancyhands/fancyhands-tutorial-1
-```
 
 Now we need to import the project into Google App Engine. In the Google App Engine Launcher “add an existing application” using the source code you just downloaded. 
 
@@ -38,21 +35,24 @@ Now start the server by clicking the big green run button.
 
 ![starting the server](http://www.fancyhands.com/images/api-tutorials/green-button.png)
 
-## Coding
+## Wiring up the Application
 
 In your web browser open [http://localhost:8888/](http://localhost:8888/)
 
 You should be presented with the UI for prank caller, but the backend has yet to be hooked up.
 
-Prank Call Flow:
+#### Import the API wrapper
 
-Open **main.py** and import **FancyhandsClient** into the project:
+This wrapper for the Fancy Hands API will let you easily work with the API.  
+Open **main.py** and at the top of the file, import **FancyhandsClient** into the project:
 
 ``` python
 from fancyhands import FancyhandsClient
 ```
 
-Next, in the `MainHandler` class you will need to create a `POST` method to catch the posted data and setup the FancyhandsClient. 
+#### Creating a Post Method
+
+Next, in the `MainHandler` class you will need to create a `post` method to catch the posted data and setup the FancyhandsClient. 
 Make sure to change your API keys to what you received in Step One.
 
 ``` python
@@ -76,7 +76,8 @@ class MainHandler(webapp2.RequestHandler):
         client = FancyhandsClient(api_key, secret)
 ```
 
-Now you need to setup some basic data to be posted to Fancy Hands so they can fulfil the request. In `MainHandler`’s post method write this:
+Now you need to setup some basic data to be posted to Fancy Hands so they can fulfil the request.  
+Continuing where we left off in the `MainHandler`’s `post` method, add this:
 
 ``` python
 # What our assistants see when selecting what request to perform.
@@ -110,13 +111,15 @@ custom_field = {
 custom_fields.append(custom_field)
 ```
 
-Now lets create the request with the Fancy Hands Python API by passing in all variables we created above.
+Then we can create the request with the Fancy Hands Python API by passing in all variables we created above.
 
 ``` python
 prank_request = client.custom_create(title, description, bid, expiration_date, custom_fields)
 ```
 
-Next lets create an App Engine model to save the pranks. Put this below the `MainHandler` class.
+#### Saving to the database
+Let's take a break from the post method and create a model to save our pranks onto.
+Blow the `MainHandler` class, create a new class named `PrankModel`.
 
 ``` python
 class PrankModel(db.Model):
@@ -128,7 +131,8 @@ class PrankModel(db.Model):
     bid = db.FloatProperty()
     fh_key = db.StringProperty()
 ```
-Now lets create a classmethod on the `PrankModel` that converts the json returned from Fancy Hands Python API into the model.
+
+To communicate with our API, let's create a classmethod named `create_from_callback` that converts the json returned from Fancy Hands Python API into the model.
 
 ``` python
   class PrankModel(db.Model):
@@ -145,31 +149,43 @@ Now lets create a classmethod on the `PrankModel` that converts the json returne
         prank = PrankModel.all().filter('fh_key =', callback['key']).get()
 
         if prank:
-          prank.status = callback['status']
-          prank.numeric_status = callback['numeric_status']
+             prank.status = callback['status']
+             prank.numeric_status = callback['numeric_status']
         else:
-          prank = PrankModel()
-          prank.status = callback['status']
-          prank.title = callback['title']
-          prank.content = callback['content']
-          prank.status = callback['status']
-          prank.bid = float(callback['api_bid'])
-          prank.fh_key = callback['key']
+            prank = PrankModel()
+            prank.status = callback['status']
+            prank.title = callback['title']
+            prank.content = callback['content']
+            prank.status = callback['status']
+            prank.bid = float(callback['api_bid'])
+            prank.fh_key = callback['key']
 
         prank.put()
         return prank
 ```
-Next we need to pass `prank_request` into the `PrankModel` and render it using the prebuilt template.
+
+#### Completing the Post Method
+
+Once we have our `PrankModel` set up and ready, we can go back into our `post` method in `MainHandler` and complete it.
+
+
+Right after our API call, we wanna take the returned data and save it to our model:
 
 ``` python
 prank = PrankModel.create_from_callback(prank_request)
+```
 
+Finally we can render our template with the prank object:
+
+``` python
 # Render new data
 template_values = {'prank':prank}
 template = JINJA_ENVIRONMENT.get_template('main.html')
 self.response.write(template.render(template_values))
 ```
-Now that we have the model created lets do the check in get for a current prank and pass it into the prebuilt template.
+
+#### Getting the pranks
+Now that we have the model created lets do a check in our `get` method in `MainHandler` for a current prank and pass it into the prebuilt template.
 
 ``` python
 class MainHandler(webapp2.RequestHandler):
@@ -180,8 +196,12 @@ class MainHandler(webapp2.RequestHandler):
         template = JINJA_ENVIRONMENT.get_template('main.html')
         self.response.write(template.render(template_values))
 ```
+#### Create a Callback Handler
+The last thing we need to do is catch the callback from the Fancy Hands API.  
+After every action from an assistant the app will recieve a callback from Fancy Hands with updates on the request.  
+We also need to add the routing for "/callback".
 
-The last thing we need to do is catch the callback from the Fancy Hands API. After every action from an assistant the app will recieve a callback from Fancy Hands with updates on the request. We also need to add the routing for "/callback".
+At the bottom of `main.py` add the following:
 
 ``` python
 class CallbackHandler(webapp2.RequestHandler):
@@ -196,7 +216,7 @@ app = webapp2.WSGIApplication([
 
 ```
 
-## Make It Live
+## Making It Live
 
 Follow the steps [Here](https://developers.google.com/appengine/docs/java/gettingstarted/uploading) to launch prank caller onto a google appspot domain.
 
