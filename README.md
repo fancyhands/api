@@ -7,11 +7,11 @@ The Fancy Hands API
 [Full API documentation can be found at the wiki](https://github.com/fancyhands/fh-api/wiki)
 
 ### Examples
-We've provided a few examples that you can poke around and play with to see what kind of apps you can develop with our API
+Take a look at some apps that we built to get an idea of what can be done with API.
 
 ### Tutorials
-Get started with the API by checking out the provide tutorials.
+Get started with the API by checking out the provided tutorials.
 
 ### Wrappers
-We've provided a python wrapper, contribute by sending us a pull request!
+We've provided an initial python wrapper, contribute your own by sending us a pull request!
 
