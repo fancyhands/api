@@ -3,6 +3,8 @@ FANCYHANDS API
 
 The Fancy Hands API
 
+![flow](http://www.fancyhands.com/images/api-tutorials/Flow-Chart.png)
+
 ### Documentation
 [Full API documentation can be found in the wiki](https://github.com/fancyhands/fh-api/wiki)
 
