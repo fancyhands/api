@@ -1,8 +1,6 @@
 FANCYHANDS API
 ======
 
-The Fancy Hands API
-
 ![flow](http://www.fancyhands.com/images/api-tutorials/Flow-Chart.png)
 
 ### Documentation
