@@ -17,9 +17,11 @@ We also used [Yeoman](http://yeoman.io/) to initialize the project.
 
 The easiest way to build this project is by installing [Yeoman](http://yeoman.io/), a command line utility that helps manage dependencies. Check out their site for install info. Once you're setup, you'll wanna go into the root folder of the project and run `bower install`. This will install all of the components (listed in bower.json and package.json) you need to get up and running. 
 
-### web.js
+### The Server
 
-All of the server-side code is contained with [web.js](https://github.com/fancyhands/fh-api/blob/master/examples/burrito_app/web.js). This is where we initialize the express framework, setup our API configuration, authenticate with OAuth, and set up our /api-call URL handler. 
+[/web.js](https://github.com/fancyhands/fh-api/blob/master/examples/burrito_app/web.js)
+
+All of the server-side code is contained within [web.js](https://github.com/fancyhands/fh-api/blob/master/examples/burrito_app/web.js). This is where we initialize the express framework, setup our API configuration, authenticate with OAuth, and set up our /api-call URL handler. 
 
 You can start the server by running:
 ```
