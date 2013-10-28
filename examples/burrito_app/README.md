@@ -34,6 +34,13 @@ node web.js
 
 This is where most of the tasty burrito action happens. I won't go into too much detail about how angular.js works it's magic (that would take up way too much of your time), but I'll try to explain the steps we take through the app. 
 
+The main objective of the app is to collect information on where the user is/wants to be picked up, where they're going, and basic info about them (name and number -- so they can be contacted by the car service). Once we have this info, we can send it to the FH assistants by using the Custom Request Method.
+
+#### Step One -- Get the Pickup Location
+...
+
+
+
 ## Why burrito?
 
 I was hungry.
