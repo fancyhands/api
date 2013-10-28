@@ -3,7 +3,7 @@ BURRITO
 
 A simple car service app using the Fancy Hands API and a little Google Maps magic
 
-### How does it work?
+## How does it work?
 
 The app uses [node.js](http://nodejs.org) and [express](http://expressjs.com/) for the server side, and [Angular](http://angularjs.org/) to handle all front-end interactions and communication with the server. 
 
@@ -13,11 +13,11 @@ To send the request we use the Fancy Hands [Custom Request Method](https://www.f
 
 We also used [Yeoman](http://yeoman.io/) to initialize the project.
 
-#### Why did you call it burrito?
+### Why did you call it burrito?
 
 I was hungry.
 
-#### Building the app
+### Building the app
 
 The easiest way to build this project is by installing [Yeoman](http://yeoman.io/), a command line utility that helps manage dependencies. Check out their site for install info. Once you're setup, you'll wanna go into the root folder of the project and run `bower install`. This will install all of the components (listed in bower.json and package.json) you need to get up and running. 
 
