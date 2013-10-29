@@ -1,0 +1,32 @@
+{
+  "name": "Cheeseburger",
+  "version": "0.1",
+  "manifest_version": 2,
+  "description": "Fancy Hands phone call integration",
+  "content_scripts": [{ 
+    "matches": 
+      ["http://*.seamless.com/*",
+       "https://*.seamless.com/*",
+       "http://*.amazon.com/*",
+       "https://*.amazon.com/*",
+       "http://*.fancyhands.com/*",  
+       "https://*.fancyhands.com/*",
+       "http://*.localhost:8080/*",
+       "https://*.localhost:8080/*"
+      ], 
+     "js": ["jquery.2.0.3.min.js", "crypto-js.js", "cheeseburger.js"], 
+     "css": ["cheeseburger.css"] }
+  ],
+  "permissions": [
+    "http://www.seamless.com/",
+    "http://www.amazon.com/",
+    "http://www.fancyhands.com/",
+    "http://localhost:8080/"
+  ],
+  "web_accessible_resources": ["jquery.2.0.3.min.js"],
+  "icons": {
+  		    "16": "icon16.png",
+          "48": "icon48.png",
+          "128": "icon128.png"
+  }
+}
