@@ -12,7 +12,7 @@ Dunno, hungry at the time and liked the idea of having projects named after food
 
 The app uses [node.js](http://nodejs.org) and [express](http://expressjs.com/) for the server side, and [Angular](http://angularjs.org/) to handle all front-end interactions and communications with the server. 
 
-For mapping, we used the [Google Maps] API(https://developers.google.com/maps/documentation/javascript/)
+For mapping, we used the [Google Maps API](https://developers.google.com/maps/documentation/javascript/)
 
 To send the request we use the Fancy Hands [Custom Request Method](https://www.fancyhands.com/api/explorer#/explorer/fancyhands.request.Custom)
 
