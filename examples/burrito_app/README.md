@@ -70,7 +70,7 @@ If you look at the docs for the [Custom Request Method](https://www.fancyhands.c
     title: "name of the task", // string
     description: "what we want the assistant to perform", //string
     bid: "the amount of money you're willing to pay for the task," // integer
-    expiration_date: "when the task will expire (must be within 7 days )" // ISO String
+    expiration_date: "when the task will expire (must be within 7 days )" // ISO Date/Time
 }
 ```
 
