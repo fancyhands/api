@@ -4,6 +4,10 @@ BURRITO
 ## What is it?
 A simple car service app using the Fancy Hands API and a little Google Maps magic. Users set a pickup and dropoff point and send a request to the Fancy Hands Assistants, who in turn call up the nearest car company and schedule a pickup.
 
+##### Why Burrito?
+
+Dunno, hungry at the time and liked the idea of having projects named after food.
+
 ## How does it work?
 
 The app uses [node.js](http://nodejs.org) and [express](http://expressjs.com/) for the server side, and [Angular](http://angularjs.org/) to handle all front-end interactions and communications with the server. 
@@ -81,9 +85,8 @@ function postRequest() {
     'My number: ' + $scope.contact_number + '\n\n' + 
     'Thanks!';
     
-    // Set expiration date
+    // Create expiration date and set it to 24 hours from now
     var expiration_date = new Date();
-    // Set the expiration 24 hours from now
     expiration_date.setTime(expiration_date.getTime() + (24 * 60 * 60 * 1000)); 
 
     // Builds our the post data object with all the required fields
@@ -92,7 +95,7 @@ function postRequest() {
         _url: API_HOST + "/api/v1/request/custom/",
         title: 'Car Pickup',
         description: description,
-        bid: 4,
+        bid: 4, // in dollars the amount we'll pay the assistant to pick up the task
         expiration_date: expiration_date,
     };
 
@@ -108,9 +111,7 @@ function postRequest() {
 }            
 
 ```
+#### What Happens Next?
 
-## Why burrito?
-
-I was hungry.
-
+Now that the request is sent out, one of our assistants will pick it up and schedule the car service. We didn't build this part out, but using your webhook url, we will ping your app every time there's an update from our end. This way you can show the user the status of the task, and update them on when their car will arrive.
  
