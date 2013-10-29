@@ -74,16 +74,17 @@ So our post function will look something like this:
 
 ``` javascript
 function postRequest() {
-    // Set expiration date
-    var expiration_date = new Date();
-    // Set the expiration 24 hours from now
-    expiration_date.setTime(expiration_date.getTime() + (24 * 60 * 60 * 1000)); 
-
+    
     // Set main description text
     var description = 'Call a nearby car service and have them pick me up at ' + $scope.pickupLocation + ' and drop me off at ' + $scope.dropoffLocation + '.\n\n' +
     'My name: ' + $scope.contact_name + '\n' +
     'My number: ' + $scope.contact_number + '\n\n' + 
     'Thanks!';
+    
+    // Set expiration date
+    var expiration_date = new Date();
+    // Set the expiration 24 hours from now
+    expiration_date.setTime(expiration_date.getTime() + (24 * 60 * 60 * 1000)); 
 
     // Builds our the post data object with all the required fields
     var post_data = {
