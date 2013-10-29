@@ -4,7 +4,7 @@ BURRITO
 ## What is it?
 A simple car service app using the Fancy Hands API and a little Google Maps magic. Users set a pickup and dropoff point and send a request to the Fancy Hands Assistants, who in turn call up the nearest car company and schedule a pickup.
 
-##### Why Burrito?
+##### Why is it called Burrito?
 
 Dunno, hungry at the time and liked the idea of having projects named after food.
 
@@ -115,3 +115,4 @@ function postRequest() {
 
 Now that the request is sent out, one of our assistants will pick it up and schedule the car service. We didn't build this part out, but using your webhook url, we will ping your app every time there's an update from our end. This way you can show the user the status of the task, and update them on when their car will arrive.
  
+Questions, comments, feedback? Email us at api@fancyhands.com, [create an issue on github](https://github.com/fancyhands/fh-api/issues), or submit a pull request.
