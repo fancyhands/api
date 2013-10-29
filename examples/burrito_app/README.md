@@ -4,7 +4,7 @@ BURRITO
 ## What is it?
 A simple car service app using the Fancy Hands API and a little Google Maps magic. Users set a pickup and dropoff point and send a request to the Fancy Hands Assistants, who in turn call up the nearest car company and schedule a pickup.
 
-[See it in action at fh-burrito.herokuapp.com!](fh-burrito.herokuapp.com)
+[See it in action at fh-burrito.herokuapp.com!](http://fh-burrito.herokuapp.com)
 
 ##### Why is it called Burrito?
 
