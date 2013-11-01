@@ -9,7 +9,7 @@ FANCYHANDS API
 ### Examples
 Take a look at some apps that we built to get an idea of what can be done with API.
 * [Burrito](https://github.com/fancyhands/fh-api/tree/master/examples/burrito_app) - A car service app
-* [Cheeseburger](https://github.com/fancyhands/fh-api/tree/master/examples/cheeseburger) - A Chrome extention that adds Fancy Hands add ons to popular sites
+* [Cheeseburger](https://github.com/fancyhands/fh-api/tree/master/examples/cheeseburger) - A Chrome extension that adds Fancy Hands add ons to popular sites
 
 ### Tutorials
 Get started with the API by checking out the provided tutorials.
