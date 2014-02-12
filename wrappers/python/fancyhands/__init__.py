@@ -1,8 +1,9 @@
 from urllib import urlencode
+from datetime import datetime
 import oauth2 as oauth
 import json
 
-API_HOST = 'https://www.fancyhands.com'
+API_HOST = 'https://www.fancyhands.com/'
 
 class FancyhandsClient(object):
 	def __init__(self, api_key, secret):
@@ -45,6 +46,8 @@ class FancyhandsClient(object):
 
 	""" 
     This will allow you to submit a task, specify which data you'd like back (custom_fields) and set the price (bid) you're willing to pay.
+    (expiration_date) needs to be a python datetime and marks when the task will expire if not picked up by an assistant.
+    
     """
 	def custom_create(self, title=None, description=None, bid=None, expiration_date=None, custom_fields={}, test=False):
 		uri = '/api/v1/request/custom/'
@@ -53,7 +56,7 @@ class FancyhandsClient(object):
 			'title': title,
 			'description': description,
 			'bid': bid,
-			'expiration_date': expiration_date,
+			'expiration_date': expiration_date.strftime('%Y-%m-%dT%H:%M:%SZ'),
 			'custom_fields': custom_fields,
 			'test':test,
 		}

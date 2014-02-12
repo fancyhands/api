@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='fancyhands-python',
-    version='0.1dev',
+    version='0.2dev',
     packages = find_packages(),
     license='MIT',
     install_requires = ['httplib2', 'oauth2',],
