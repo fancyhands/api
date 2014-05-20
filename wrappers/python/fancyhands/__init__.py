@@ -3,7 +3,7 @@ from datetime import datetime
 import oauth2 as oauth
 import json
 
-API_HOST = 'https://www.fancyhands.com/'
+API_HOST = 'https://www.fancyhands.com'
 
 class FancyhandsClient(object):
 	def __init__(self, api_key, secret):
