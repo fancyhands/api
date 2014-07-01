@@ -11,14 +11,14 @@
 
         var custom_create = function(options) {
             
-            if(!options.title) throw "You need to specify a title";
-            if(!options.description) throw "You need to specify a description";
+            if(!options.title) throw "FH API Error: You need to specify a title";
+            if(!options.description) throw "FH API Error: You need to specify a description";
             if(!options.bid) {
-                console.warn('Bid price not set. We\'ve automatically set it at $3');
+                console.warn('FH API Warning: Bid price not set. We\'ve automatically set it at $3');
                 options.bid = 3;
             }
             if(!options.expiration) {
-                console.warn('No expiration set. We\'ve automatically set it to 24hrs from now.');
+                console.warn('FH API Warning: No expiration set. We\'ve automatically set it to 24hrs from now.');
 
                 var expiration_date = new Date();
                 expiration_date.setTime(expiration_date.getTime() + (24 * 60 * 60 * 1000)); 
@@ -34,6 +34,9 @@
             };
 
             post_data.extend(options);
+
+            console.log(post_data);
+
         }
 
         var custom_cancel = function() {
