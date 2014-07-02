@@ -47,7 +47,6 @@ class FancyhandsClient(object):
 	""" 
     This will allow you to submit a task, specify which data you'd like back (custom_fields) and set the price (bid) you're willing to pay.
     (expiration_date) needs to be a python datetime and marks when the task will expire if not picked up by an assistant.
-    
     """
 	def custom_create(self, title=None, description=None, bid=None, expiration_date=None, custom_fields={}, test=False):
 		uri = '/api/v1/request/custom/'
@@ -72,6 +71,41 @@ class FancyhandsClient(object):
 
 		query_params = {
 			'key': key,
+		}
+
+		return self.oauth_request(uri=uri, query_params=query_params, http_method='POST')
+
+
+	""" 
+    This will allow you to get any call request you have submitted.
+    """
+	def call_get(self, key=None, status=None, cursor=None):
+		uri = '/api/v1/call/'
+
+		query_params = {
+			'key': key,
+			'status': status,
+			'cursor': cursor,
+		}
+		query_params = {i:j for i,j in query_params.items() if j != None}
+
+		return self.oauth_request(uri=uri, query_params=query_params, http_method='GET')
+
+
+	""" 
+    This will allow you to submit a call task. (phone) is the phone number to be called. (conversation) is the json encoded
+    script for the assistants.
+    """
+	def call_create(self, phone=None, conversation=None, retry=False, retry_delay=0, retry_limit=0, test=False):
+		uri = '/api/v1/call/'
+
+		query_params = {
+			'phone': phone,
+			'conversation': conversation,
+			'retry':retry,
+			'retry_delay':retry_delay,
+			'retry_limit',retry_limit,
+			'test':test,
 		}
 
 		return self.oauth_request(uri=uri, query_params=query_params, http_method='POST')
