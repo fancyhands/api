@@ -6,6 +6,9 @@ import json
 API_HOST = 'https://www.fancyhands.com'
 
 class FancyhandsClient(object):
+	##########################################################################################
+	# Utility
+	##########################################################################################
 	def __init__(self, api_key, secret):
 		self.api_key = api_key
 		self.secret = secret
@@ -28,10 +31,13 @@ class FancyhandsClient(object):
 			raise Exception(content)
 
 		return content
+ 
 
-	""" 
-    This will allow you to get any request you have submitted.
-    """
+ 	##########################################################################################
+	# Custom API
+	##########################################################################################
+
+    # This will allow you to get any request you have submitted.
 	def custom_get(self, key=None, status=None, cursor=None):
 		uri = '/api/v1/request/custom/'
 
@@ -44,10 +50,9 @@ class FancyhandsClient(object):
 
 		return self.oauth_request(uri=uri, query_params=query_params, http_method='GET')
 
-	""" 
-    This will allow you to submit a task, specify which data you'd like back (custom_fields) and set the price (bid) you're willing to pay.
-    (expiration_date) needs to be a python datetime and marks when the task will expire if not picked up by an assistant.
-    """
+
+    # This will allow you to submit a task, specify which data you'd like back (custom_fields) and set the price (bid) you're willing to pay.
+    # (expiration_date) needs to be a python datetime and marks when the task will expire if not picked up by an assistant.
 	def custom_create(self, title=None, description=None, bid=None, expiration_date=None, custom_fields={}, test=False):
 		uri = '/api/v1/request/custom/'
 
@@ -62,10 +67,8 @@ class FancyhandsClient(object):
 
 		return self.oauth_request(uri=uri, query_params=query_params, http_method='POST')
 
-	""" 
-    This is the cancel method. Calling this method will cancel a request from being completed. 
-    If the task hasn't been started, you can cancel. Otherwise, it will fail. 
-    """
+    # This is the cancel method. Calling this method will cancel a request from being completed. 
+    # If the task hasn't been started, you can cancel. Otherwise, it will fail. 
 	def custom_cancel(self, key=None):
 		uri = '/api/v1/request/custom/cancel/'
 
@@ -76,9 +79,12 @@ class FancyhandsClient(object):
 		return self.oauth_request(uri=uri, query_params=query_params, http_method='POST')
 
 
-	""" 
-    This will allow you to get any call request you have submitted.
-    """
+
+	##########################################################################################
+	# Call API
+	##########################################################################################
+
+    # This will allow you to get any call request you have submitted.
 	def call_get(self, key=None, status=None, cursor=None):
 		uri = '/api/v1/call/'
 
@@ -92,10 +98,9 @@ class FancyhandsClient(object):
 		return self.oauth_request(uri=uri, query_params=query_params, http_method='GET')
 
 
-	""" 
-    This will allow you to submit a call task. (phone) is the phone number to be called. (conversation) is the json encoded
-    script for the assistants.
-    """
+	
+    # This will allow you to submit a call task. (phone) is the phone number to be called. (conversation) is the json encoded
+    # script for the assistants.
 	def call_create(self, phone=None, conversation=None, retry=False, retry_delay=0, retry_limit=0, test=False):
 		uri = '/api/v1/call/'
 
@@ -104,8 +109,51 @@ class FancyhandsClient(object):
 			'conversation': conversation,
 			'retry':retry,
 			'retry_delay':retry_delay,
-			'retry_limit',retry_limit,
+			'retry_limit':retry_limit,
 			'test':test,
+		}
+
+		return self.oauth_request(uri=uri, query_params=query_params, http_method='POST')
+
+	##########################################################################################
+	# Standard API
+	##########################################################################################
+
+	def standard_get(self, key=None, status=None, cursor=None):
+		uri = '/api/v1/request/standard/'
+
+		query_params = {
+			'key': key,
+			'status': status,
+			'cursor': cursor,
+		}
+		query_params = {i:j for i,j in query_params.items() if j != None}
+
+		return self.oauth_request(uri=uri, query_params=query_params, http_method='GET')
+
+	def standard_create(self, title=None, description=None, bid=None, expiration_date=None, test=False):
+		uri = '/api/v1/request/standard/'
+
+		query_params = {
+			'title': title,
+			'description': description,
+			'bid': bid,
+			'expiration_date': expiration_date.strftime('%Y-%m-%dT%H:%M:%SZ'),
+			'test':test,
+		}
+
+		return self.oauth_request(uri=uri, query_params=query_params, http_method='POST')
+
+	##########################################################################################
+	# Messages API
+	##########################################################################################
+
+	def standard_message(self, key=None, message=None):
+		uri = '/api/v1/request/standard/messages/'
+
+		query_params = {
+			'key': key,
+			'message': message,
 		}
 
 		return self.oauth_request(uri=uri, query_params=query_params, http_method='POST')
