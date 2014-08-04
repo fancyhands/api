@@ -1,7 +1,8 @@
 fancyhands-python
 =========
 
-Python library for the [Fancy Hands API]. Signup [here.]
+Python library for the [Fancy Hands API](https://www.fancyhands.com/developer). 
+[Full documentation for the API](https://github.com/fancyhands/api/wiki) lives on github.
 
 Version
 ----
@@ -15,17 +16,18 @@ Requirements
 Installation
 --------------
 
-```sh
-git clone git@github.com:fancyhands/fancyhands-python.git
-cd fancyhands-python
+```git clone https://github.com/fancyhands/api.git
+cd api/wrappers/python
 python setup.py install
+# or just copy the api/wrappers/python directory to your project (probably want to rename it)
 ```
+
+
 Usage
 ----------
-##### Get all your custom requests:
+##### Dealing with 'custom' requests
 
-```python
-from fancyhands import FancyhandsClient
+```from fancyhands import FancyhandsClient
 
 api_key = 'your_api_key'
 secret = 'your_api_secret'
@@ -58,7 +60,25 @@ request = client.custom_create(title, description, bid, expiration_date, custom_
 
 License
 ----
-MIT
 
-  [Fancy Hands API]: https://www.fancyhands.com/developer
-  [here.]: https://www.fancyhands.com/api/explorer
+The MIT License (MIT)
+
+Copyright (c) 2013-2014 Fancy Hands, Inc.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
