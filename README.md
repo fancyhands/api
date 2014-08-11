@@ -19,3 +19,4 @@ Get started with the API by checking out the provided tutorials.
 We've provided an initial python wrapper, contribute your own by sending us a pull request!
 * [Python](https://github.com/fancyhands/fh-api/tree/master/wrappers/python)
 * [PHP (via @dealerteam-charles)](https://github.com/dealerteam-charles/FancyHandsPHP)
+* [Node](https://github.com/fancyhands/fancyhands-node)
