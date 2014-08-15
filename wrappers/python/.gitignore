@@ -1,7 +1,0 @@
-.DS_Store
-build
-dist
-*pyc
-*swp
-*egg-info
-test.py
