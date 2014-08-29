@@ -17,6 +17,6 @@ Get started with the API by checking out the provided tutorials.
 
 ### Wrappers
 
-We have wrappers and SDKs for literraly thousands of langauges. Please see our official API docs (also on github) for a complete list. 
+We have wrappers and SDKs for literraly thousands of langauges. Please see the [official Fancy Hands API docs](https://github.com/fancyhands/api/wiki) (also on github) for a complete list. 
  
 Click here: [Fancy Hands Developer Wrappers and SDKs](https://github.com/fancyhands/api/wiki#wrappers)
