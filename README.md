@@ -16,7 +16,7 @@ Get started with the API by checking out the provided tutorials.
 * [Tutorial-1](https://github.com/fancyhands/fh-api/tree/master/tutorials/tutorial-1) - Build a very basic prank call app using Google App Engine and the Fancy Hands API
 
 ### Wrappers
-We've provided an initial python wrapper, contribute your own by sending us a pull request!
-* [Python](https://github.com/fancyhands/fancyhands-python)
-* [PHP](https://github.com/fancyhands/fancyhands-php) (originally by  [@dealerteam-charles](https://github.com/dealerteam-charles/FancyHandsPHP))
-* [Node](https://github.com/fancyhands/fancyhands-node)
+
+We have wrappers and SDKs for literraly thousands of langauges. Please see our official API docs (also on github) for a complete list. 
+ 
+Click here: [Fancy Hands Developer Wrappers and SDKs](https://github.com/fancyhands/api/wiki#wrappers)
