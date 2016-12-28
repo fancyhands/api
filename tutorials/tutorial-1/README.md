@@ -218,7 +218,7 @@ app = webapp2.WSGIApplication([
 
 ## Making It Live
 
-Follow the steps [Here](https://developers.google.com/appengine/docs/java/gettingstarted/uploading) to launch prank caller onto a google appspot domain.
+Follow the steps [Here](https://cloud.google.com/appengine/docs/python/getting-started/deploying-the-application) to launch prank caller onto a google appspot domain.
 
 Your URL will look something like prank-caller@appspot.com. You should now change your webhook on fancyhands to yourdomain.appspot.com/callback. You can do that [Here](https://www.fancyhands.com/api/oauth/developer)
 
